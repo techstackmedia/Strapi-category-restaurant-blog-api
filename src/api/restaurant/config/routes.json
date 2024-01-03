@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/restaurants/search",
+  "handler": "restaurant.search",
+  "config": {
+    "policies": []
+  }
+}
