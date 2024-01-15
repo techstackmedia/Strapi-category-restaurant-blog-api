@@ -677,6 +677,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookmarkBookmark extends Schema.CollectionType {
+  collectionName: 'bookmarks';
+  info: {
+    singularName: 'bookmark';
+    pluralName: 'bookmarks';
+    displayName: 'Bookmark';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String & Attribute.Required & Attribute.Unique;
+    Description: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::bookmark.bookmark',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::bookmark.bookmark',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -797,6 +828,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::bookmark.bookmark': ApiBookmarkBookmark;
       'api::category.category': ApiCategoryCategory;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'api::subscription.subscription': ApiSubscriptionSubscription;
