@@ -631,7 +631,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -660,6 +659,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    bookmarks: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::bookmark.bookmark'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -683,13 +687,19 @@ export interface ApiBookmarkBookmark extends Schema.CollectionType {
     singularName: 'bookmark';
     pluralName: 'bookmarks';
     displayName: 'Bookmark';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    users_permissions_user: Attribute.Relation<
+      'api::bookmark.bookmark',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     Name: Attribute.String & Attribute.Required & Attribute.Unique;
-    Description: Attribute.Blocks;
+    Description: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

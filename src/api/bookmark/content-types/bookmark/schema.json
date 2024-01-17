@@ -4,20 +4,28 @@
   "info": {
     "singularName": "bookmark",
     "pluralName": "bookmarks",
-    "displayName": "Bookmark"
+    "displayName": "Bookmark",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bookmarks"
+    },
     "Name": {
       "type": "string",
       "required": true,
       "unique": true
     },
     "Description": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     }
   }
 }
