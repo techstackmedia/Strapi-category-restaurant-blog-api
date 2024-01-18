@@ -700,6 +700,7 @@ export interface ApiBookmarkBookmark extends Schema.CollectionType {
     >;
     Name: Attribute.String & Attribute.Required & Attribute.Unique;
     Description: Attribute.Blocks & Attribute.Required;
+    identity: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

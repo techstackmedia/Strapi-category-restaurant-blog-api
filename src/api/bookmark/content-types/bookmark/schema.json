@@ -26,6 +26,9 @@
     "Description": {
       "type": "blocks",
       "required": true
+    },
+    "identity": {
+      "type": "integer"
     }
   }
 }
