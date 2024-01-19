@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "bookmarks"
-    },
     "Name": {
       "type": "string",
       "required": true,
@@ -29,6 +23,12 @@
     },
     "identity": {
       "type": "integer"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bookmarks"
     }
   }
 }

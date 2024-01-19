@@ -67,9 +67,9 @@
     },
     "bookmarks": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::bookmark.bookmark",
-      "mappedBy": "users_permissions_user"
+      "mappedBy": "users"
     }
   }
 }
